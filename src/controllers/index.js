@@ -1,4 +1,4 @@
-const fn_index = async ctx => {
+const fnIndex = async ctx => {
   ctx.response.body = `<h1>Index</h1>
         <form action="/signin" method="post">
             <p>Name: <input name="name" value="koa"></p>
@@ -7,12 +7,11 @@ const fn_index = async ctx => {
         </form>`;
 };
 
-const fn_hello = async (ctx, next) => {
-  var name = ctx.params.name;
-  ctx.response.body = `<h1>Hello, ${name}!</h1>`;
+const fnHello = async ctx => {
+  ctx.response.body = `<h1>Hello, ${ctx.params.name}!</h1>`;
 };
 
 module.exports = {
-  "GET /": fn_index,
-  "GET /hello/:name": fn_hello
+  "GET /": fnIndex,
+  "GET /hello/:name": fnHello,
 };
